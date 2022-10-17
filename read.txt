@@ -1,0 +1,63 @@
+start : python3 managepy runserver [env should be activated using pipenv shell where manage.py file is located]
+
+
+
+
+this dir has an environment set up 
+
+/// [commands] : 
+"pipenv install django" this dir was initialized with this command/ this dir will work an a new environment for this project or for django.
+"pipenv shell" this will activate the virtual environment with the python interpreter
+//NOTE : this commands wont work in normal terminal or vs code terminal untill we 
+//       activate the environment with the
+//       "pipenv shell" command
+"django-admin" - It is a utility that comes with django
+"django-admin startproject nlp_project" - django admin will create a list of files and a dir for us in the root folder
+//Note : if we want root dir instead or creating a new directory inside root directory we can use : 
+	 "django-admin startproject nlp_project . " [. means current directory]
+
+
+ /// [STRUCTURE]
+__init__.py : defines this directory as the package
+settings.py : defines this settings for application
+urls.py     : Defines url for this application
+
+[ wsgi and asgi are use for  Deployment ]
+
+
+
+/// To [start] the Project we have [Manage.py] which is connected to the settings 
+but using "django-admin runserver" we wont be start because django dont know the project settings yet, so then to start server use : "python manage.py runserver"
+
+//TO start in vs code we need the python environment 
+so use, this command in the shell of django environment 
+"pipenv --venv"
+'/Users/jaimitkumarpanchal/.local/share/virtualenvs/Project-ChLuCITO' copy this path and paste in the vscode interpreter path
+add '/bin/python' at the end
+'/Users/jaimitkumarpanchal/.local/share/virtualenvs/Project-ChLuCITO/bin/python'
+
+
+
+[IMPORTANT] - START FROM HERE AFTER SETTING UP EVERYTHING : 
+/// Now to start a new app we use this command "python3 manage.py startapp interface"
+/// also we need to add the name of the application in the INSTALLED_APPS section to register it.
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'interface'
+]
+
+/// in the [interface] application directory 
+- we have migrations/ directory for generating DB tables
+- admin.py will have admin related things 
+- apps.py to configure how the app will look like
+- models.py to get the data from DB or represent data from DB
+- views.py it is a request handler and not the view [takes a request and returns the response] 
+
+
+[views.py is the IMPORTANT file to start with]

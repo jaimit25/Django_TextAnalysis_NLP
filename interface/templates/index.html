@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>NLP Project</title>
+	{% load static %}
+	<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+	<form method="post" class="container">
+		{% csrf_token %} {{ form }}
+		<h3>Text Analysis</h3>
+		<textarea id="txt" name="input" placeholder=" Enter Data" rows="4" cols="50"></textarea>
+		<!-- <input type="text"  name="input" placeholder=" Enter Data"/> -->
+		<p>
+			<input type="submit" value="Process" />
+		<form method="get">
+			<input type="submit" value="Clear" />
+		</form>
+		</p>
+	</form>
+
+	<div class="content">
+		<div>
+			<h2>Sentence</h2>
+		</div>
+		<hr>
+		<div>
+			{{Data}}
+		</div>
+
+
+		<div>
+			<h2>Sentiment's</h2>
+		</div>
+		<hr>
+		<p>
+			Sentence Vibe : {{Result.polarity }} |
+			Subject Vibe : {{Result.subjectivity}}
+		</p>
+
+
+
+		<div>
+			<h2>Word's</h2>
+		</div>
+		<hr>
+		<div class="token">
+			<!-- {{data_tokens}} -->
+			{% for item in data_tokens %}
+			<span class="box">{{item}}</span>
+			{% endfor %}
+		</div>
+
+
+		<div>
+			<h2>Subject Extraction</h2>
+		</div>
+		<hr>
+		<div class="token">
+			<!-- {{data_tokens}} -->
+			{% for item in Subject_Detection %}
+			<span class="box">{{item}}</span>
+			{% endfor %}
+		</div>
+
+		<div>
+			<h2>Parts of Speech (GRAMMAR)</h2>
+		</div>
+		<hr>
+		<div class="token">
+			<!-- {{data_tokens}} -->
+			{% for item in POS %}
+			<span class="box">{{item}}</span>
+			{% endfor %}
+		</div>
+	</div>
+
+
+
+
+
+
+
+</body>
+
+</html>
